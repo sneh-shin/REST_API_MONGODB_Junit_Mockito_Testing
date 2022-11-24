@@ -6,4 +6,6 @@
 package com.niit.jap.domain;
 
 public class Artist {
+    private int artistId;
+    private String ArtistName;
 }
