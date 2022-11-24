@@ -15,4 +15,56 @@ public class Track {
     private int trackName;
     private double trackRating;
     private Artist trackArtist;
+
+    public Track() {
+    }
+
+    public Track(int trackId, int trackName, double trackRating, Artist trackArtist) {
+        this.trackId = trackId;
+        this.trackName = trackName;
+        this.trackRating = trackRating;
+        this.trackArtist = trackArtist;
+    }
+
+    public int getTrackId() {
+        return trackId;
+    }
+
+    public void setTrackId(int trackId) {
+        this.trackId = trackId;
+    }
+
+    public int getTrackName() {
+        return trackName;
+    }
+
+    public void setTrackName(int trackName) {
+        this.trackName = trackName;
+    }
+
+    public double getTrackRating() {
+        return trackRating;
+    }
+
+    public void setTrackRating(double trackRating) {
+        this.trackRating = trackRating;
+    }
+
+    public Artist getTrackArtist() {
+        return trackArtist;
+    }
+
+    public void setTrackArtist(Artist trackArtist) {
+        this.trackArtist = trackArtist;
+    }
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "trackId=" + trackId +
+                ", trackName=" + trackName +
+                ", trackRating=" + trackRating +
+                ", trackArtist=" + trackArtist +
+                '}';
+    }
 }
