@@ -24,26 +24,27 @@ public class TrackServiceImpl implements TrackService {
 
     @Override
     public Track saveTrack(Track track) {
-        return null;
+        return repository.save(track);
     }
 
     @Override
     public boolean deleteTrack(int trackId) {
-        return false;
+        repository.deleteById(trackId);
+        return true;
     }
 
     @Override
     public List<Track> getTracks() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public List<Track> getAllTrackFromTrackRating(double trackRating) {
-        return null;
+        return repository.findAllTrackFromTrackRating(trackRating);
     }
 
     @Override
     public List<Track> getAllTrackFromArtistName(String artistName) {
-        return null;
+        return repository.findAllTrackFromArtistName(artistName);
     }
 }
