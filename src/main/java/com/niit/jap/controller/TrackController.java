@@ -33,9 +33,9 @@ public class TrackController {
         return new ResponseEntity<>(service.getTracks(), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/deleteValue")
-    public ResponseEntity<?> delete(@PathVariable int id) throws TrackNotFound {
-        return new ResponseEntity<>(service.deleteTrack(id), HttpStatus.ACCEPTED);
+    @DeleteMapping("/deleteValue/{trackId}")
+    public ResponseEntity<?> delete(@PathVariable int trackId) throws TrackNotFound {
+        return new ResponseEntity<>(service.deleteTrack(trackId), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/getRating/{trackRating}")
