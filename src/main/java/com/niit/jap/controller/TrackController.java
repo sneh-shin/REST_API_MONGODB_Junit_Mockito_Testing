@@ -6,6 +6,9 @@
 package com.niit.jap.controller;
 
 import com.niit.jap.domain.Track;
+import com.niit.jap.exception.ArtistNotFound;
+import com.niit.jap.exception.TrackAlreadyExist;
+import com.niit.jap.exception.TrackNotFound;
 import com.niit.jap.service.TrackServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +24,7 @@ public class TrackController {
     }
 
     @PostMapping("/saveValue")
-    public ResponseEntity<?> save(Track track) {
+    public ResponseEntity<?> save(@RequestBody Track track) throws TrackAlreadyExist {
         return new ResponseEntity<>(service.saveTrack(track), HttpStatus.CREATED);
     }
 
@@ -31,17 +34,17 @@ public class TrackController {
     }
 
     @DeleteMapping("/deleteValue")
-    public ResponseEntity<?> delete(int id) {
+    public ResponseEntity<?> delete(@PathVariable int id) throws TrackNotFound {
         return new ResponseEntity<>(service.deleteTrack(id), HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/getValue/{trackRating}")
-    public ResponseEntity<?> getByRating(double trackRating) {
+    @GetMapping("/getRating/{trackRating}")
+    public ResponseEntity<?> getByRating(@PathVariable double trackRating) {
         return new ResponseEntity<>(service.getAllTrackFromTrackRating(trackRating), HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/getValue/{artistName}")
-    public ResponseEntity<?> getByArtist(String artistName) {
+    @GetMapping("/getArtist/{artistName}")
+    public ResponseEntity<?> getByArtist(@PathVariable String artistName) throws ArtistNotFound {
         return new ResponseEntity<>(service.getAllTrackFromArtistName(artistName), HttpStatus.ACCEPTED);
     }
 }

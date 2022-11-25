@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface TrackRepository extends MongoRepository<Track, Integer> {
-    @Query("{'trackRating':{$gt:[?0]}}")
+    @Query("{'trackRating':{$gt:4}}")
     List<Track> findAllTrackFromTrackRating(double trackRating);
 
     @Query("{'trackArtist.artistName':{$in:[?0]}}")

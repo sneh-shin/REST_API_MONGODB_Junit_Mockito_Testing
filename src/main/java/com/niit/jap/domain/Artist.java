@@ -7,14 +7,14 @@ package com.niit.jap.domain;
 
 public class Artist {
     private int artistId;
-    private String ArtistName;
+    private String artistName;
 
     public Artist() {
     }
 
     public Artist(int artistId, String artistName) {
         this.artistId = artistId;
-        ArtistName = artistName;
+        this.artistName = artistName;
     }
 
     public int getArtistId() {
@@ -26,18 +26,18 @@ public class Artist {
     }
 
     public String getArtistName() {
-        return ArtistName;
+        return artistName;
     }
 
     public void setArtistName(String artistName) {
-        ArtistName = artistName;
+        this.artistName = artistName;
     }
 
     @Override
     public String toString() {
         return "Artist{" +
                 "artistId=" + artistId +
-                ", ArtistName='" + ArtistName + '\'' +
+                ", artistName='" + artistName + '\'' +
                 '}';
     }
 }

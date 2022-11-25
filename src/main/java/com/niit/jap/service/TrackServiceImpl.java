@@ -6,6 +6,9 @@
 package com.niit.jap.service;
 
 import com.niit.jap.domain.Track;
+import com.niit.jap.exception.ArtistNotFound;
+import com.niit.jap.exception.TrackAlreadyExist;
+import com.niit.jap.exception.TrackNotFound;
 import com.niit.jap.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,14 +26,24 @@ public class TrackServiceImpl implements TrackService {
     }
 
     @Override
-    public Track saveTrack(Track track) {
+    public Track saveTrack(Track track) throws TrackAlreadyExist {
+
+        if (repository.findById(track.getTrackId()).isPresent()) {
+            throw new TrackAlreadyExist();
+        }
         return repository.save(track);
     }
 
     @Override
-    public boolean deleteTrack(int trackId) {
-        repository.deleteById(trackId);
-        return true;
+    public boolean deleteTrack(int trackId) throws TrackNotFound {
+        boolean result = false;
+        if (repository.findById(trackId).isEmpty()) {
+            throw new TrackNotFound();
+        } else {
+            repository.deleteById(trackId);
+            result = true;
+        }
+        return result;
     }
 
     @Override
@@ -44,7 +57,10 @@ public class TrackServiceImpl implements TrackService {
     }
 
     @Override
-    public List<Track> getAllTrackFromArtistName(String artistName) {
+    public List<Track> getAllTrackFromArtistName(String artistName) throws ArtistNotFound {
+        if (repository.findAllTrackFromArtistName(artistName).isEmpty()) {
+            throw new ArtistNotFound();
+        }
         return repository.findAllTrackFromArtistName(artistName);
     }
 }

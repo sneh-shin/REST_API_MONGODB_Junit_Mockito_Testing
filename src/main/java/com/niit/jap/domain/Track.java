@@ -12,14 +12,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Track {
     @Id
     private int trackId;
-    private int trackName;
+    private String trackName;
     private double trackRating;
     private Artist trackArtist;
 
     public Track() {
     }
 
-    public Track(int trackId, int trackName, double trackRating, Artist trackArtist) {
+    public Track(int trackId, String trackName, double trackRating, Artist trackArtist) {
         this.trackId = trackId;
         this.trackName = trackName;
         this.trackRating = trackRating;
@@ -34,11 +34,11 @@ public class Track {
         this.trackId = trackId;
     }
 
-    public int getTrackName() {
+    public String getTrackName() {
         return trackName;
     }
 
-    public void setTrackName(int trackName) {
+    public void setTrackName(String trackName) {
         this.trackName = trackName;
     }
 
